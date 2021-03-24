@@ -4,8 +4,8 @@ public class DaoFactory {
 
     private final static ConnectionPool connectionPool = ConnectionPool.getInstance();
 
-    public static UserDao createUserDao() {
-        return new UserDao(connectionPool.getConnection());
+    public static UsersDao createUserDao() {
+        return new UsersDao(connectionPool.getConnection());
     }
 
     public static IngredientsDao createIngredientsDao() {
@@ -14,5 +14,9 @@ public class DaoFactory {
 
     public static DrinksDao createDrinksDao() {
         return new DrinksDao(connectionPool.getConnection());
+    }
+
+    public static OrdersDao createOrdersDao() {
+        return new OrdersDao(connectionPool.getConnection());
     }
 }

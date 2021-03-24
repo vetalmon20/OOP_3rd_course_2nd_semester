@@ -1,7 +1,6 @@
 package app.dao;
 
 import app.model.drink.Drink;
-import app.model.ingredient.Ingredient;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

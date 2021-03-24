@@ -6,7 +6,7 @@ public class UserBuilder {
     private String name;
     private String email;
     private String pass;
-    private Boolean isAdmin;
+    private String role;
 
     public UserBuilder setId(Long id) {
         this.id = id;
@@ -33,12 +33,12 @@ public class UserBuilder {
         return this;
     }
 
-    public UserBuilder setIsAdmin(Boolean isAdmin) {
-        this.isAdmin = isAdmin;
+    public UserBuilder setIsAdmin(String role) {
+        this.role = role;
         return this;
     }
 
     public User build() {
-        return new User(id, money, name, email, pass, isAdmin);
+        return new User(id, money, name, email, pass, role);
     }
 }

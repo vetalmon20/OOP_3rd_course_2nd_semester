@@ -6,15 +6,15 @@ public class User {
     private String name;
     private String email;
     private String pass;
-    private Boolean isAdmin;
+    private String role;
 
-    public User(Long id, Long money, String name, String email, String pass, Boolean isAdmin) {
+    public User(Long id, Long money, String name, String email, String pass, String role) {
         this.id = id;
         this.money = money;
         this.name = name;
         this.email = email;
         this.pass = pass;
-        this.isAdmin = isAdmin;
+        this.role = role;
     }
 
     public Long getId() {
@@ -57,11 +57,19 @@ public class User {
         this.pass = pass;
     }
 
-    public Boolean getAdmin() {
-        return isAdmin;
+    public String getAdmin() {
+        return role;
     }
 
-    public void setAdmin(Boolean admin) {
-        isAdmin = admin;
+    public void setAdmin(String role) {
+        this.role = role;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                '}';
     }
 }

@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
-import java.util.ResourceBundle;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -28,7 +27,7 @@ public class ListServlet extends HttpServlet {
 
         logger.warn("hereee");
 
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("pages/list.jsp");
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("pages/registration.jsp");
         requestDispatcher.forward(req, resp);
     }
 }

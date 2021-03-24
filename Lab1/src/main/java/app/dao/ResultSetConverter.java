@@ -24,11 +24,11 @@ public class ResultSetConverter {
                 .setEmail(resultSet.getString("email"))
                 .setName(resultSet.getString("name"))
                 .setPass(resultSet.getString("password"))
-                .setIsAdmin(resultSet.getBoolean("isAdmin"))
+                .setIsAdmin(resultSet.getString("role"))
                 .build();
     }
 
-    public static Ingredient getIngredientFromResulSet(ResultSet resultSet) throws SQLException {
+    public static Ingredient getIngredientFromResultSet(ResultSet resultSet) throws SQLException {
         return new IngredientBuilder()
                 .setAmount(resultSet.getLong("amount"))
                 .setCost(resultSet.getLong("cost"))

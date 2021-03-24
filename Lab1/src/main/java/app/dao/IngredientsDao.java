@@ -29,7 +29,7 @@ public class IngredientsDao {
             PreparedStatement statement = connection.prepareStatement(resourceBundle.getString("ingredient.findAll"));
             resultSet = statement.executeQuery();
             while (resultSet.next()) {
-                Ingredient ingredient = ResultSetConverter.getIngredientFromResulSet(resultSet);
+                Ingredient ingredient = ResultSetConverter.getIngredientFromResultSet(resultSet);
 
                 ingredients.add(ingredient);
             }
@@ -43,8 +43,8 @@ public class IngredientsDao {
     public void changeIngredientAmount(Long id, Long newAmount) {
         try {
             PreparedStatement statement = connection.prepareStatement(resourceBundle.getString("ingredient.changeAmount"));
-            statement.setLong(1, id);
-            statement.setLong(2, newAmount);
+            statement.setLong(1, newAmount);
+            statement.setLong(2, id);
             statement.executeUpdate();
             logger.info("Ingredient amount has been successfully changed");
         } catch (SQLException ex) {
@@ -61,6 +61,7 @@ public class IngredientsDao {
                 PreparedStatement statement = connection.prepareStatement(resourceBundle.getString("ingredient.findById"));
                 statement.setLong(1, id);
                 resultSet = statement.executeQuery();
+                resultSet.next();
                 String currName = resultSet.getString("name");
                 names.add(currName);
             }

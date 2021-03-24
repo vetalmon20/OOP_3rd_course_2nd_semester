@@ -1,8 +1,11 @@
 package app.servlets;
 
 import app.dao.DaoFactory;
-import app.dao.UserDao;
+import app.dao.IngredientsDao;
+import app.dao.UsersDao;
 import app.model.Model;
+import app.model.drink.Drink;
+import app.model.ingredient.Ingredient;
 import app.model.user.User;
 import app.model.user.UserBuilder;
 
@@ -12,26 +15,27 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class AddServlet extends HttpServlet {
 
-    private final UserDao userDao;
+    private final UsersDao usersDao;
 
     public AddServlet() {
-        userDao = DaoFactory.createUserDao();
+        usersDao = DaoFactory.createUserDao();
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("pages/add.jsp");
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("pages/login.jsp");
         requestDispatcher.forward(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String name = req.getParameter("name");
+       /* String name = req.getParameter("name");
         String password = req.getParameter("pass");
         String email = req.getParameter("email");
         Long money = Long.parseLong(req.getParameter("money"));
@@ -46,9 +50,10 @@ public class AddServlet extends HttpServlet {
         Model model = Model.getInstance();
         model.add(user);
 
-        userDao.create(user);
 
         req.setAttribute("userName", name);
+        doGet(req, resp);*/
+
         doGet(req, resp);
     }
 }
