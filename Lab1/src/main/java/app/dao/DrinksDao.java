@@ -40,4 +40,22 @@ public class DrinksDao {
         return drinks;
     }
 
+    public Drink findById(Long id) {
+        Drink out = null;
+        ResultSet resultSet;
+
+        try {
+            PreparedStatement statement = connection.prepareStatement(resourceBundle.getString("drinks.findById"));
+            statement.setLong(1, id);
+            resultSet = statement.executeQuery();
+            resultSet.next();
+            out = ResultSetConverter.getDrinkFromResultSet(resultSet);
+
+            logger.info("Drink has been successfully received by id");
+        } catch (SQLException ex) {
+            logger.warn("Drink is not reachable by id: {}", ex.getMessage());
+        }
+
+        return out;
+    }
 }

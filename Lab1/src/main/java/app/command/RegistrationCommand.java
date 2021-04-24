@@ -10,7 +10,7 @@ import org.apache.logging.log4j.Logger;
 
 
 public class RegistrationCommand extends Command{
-    static final Logger logger = LogManager.getLogger(LoginCommand.class);
+    static final Logger logger = LogManager.getLogger(RegistrationCommand.class);
     private final UserService userService = new UserService();
 
     public RegistrationCommand() {
@@ -32,9 +32,7 @@ public class RegistrationCommand extends Command{
             request.getSession().setAttribute("errorRegister", e.getMessage());
             logger.warn("Registration failed: {}", e.getMessage());
             return path;
-
         }
-
         return "redirect:/login";
     }
 }

@@ -29,13 +29,13 @@ public class AddServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("pages/login.jsp");
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("pages/add.jsp");
         requestDispatcher.forward(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-       /* String name = req.getParameter("name");
+        String name = req.getParameter("name");
         String password = req.getParameter("pass");
         String email = req.getParameter("email");
         Long money = Long.parseLong(req.getParameter("money"));
@@ -50,10 +50,9 @@ public class AddServlet extends HttpServlet {
         Model model = Model.getInstance();
         model.add(user);
 
-
         req.setAttribute("userName", name);
-        doGet(req, resp);*/
-
         doGet(req, resp);
+
+        //doGet(req, resp);
     }
 }

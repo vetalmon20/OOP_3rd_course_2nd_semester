@@ -59,5 +59,4 @@ public class ResultSetConverter {
                 .setCost(resultSet.getLong("cost"))
                 .build();
     }
-
 }

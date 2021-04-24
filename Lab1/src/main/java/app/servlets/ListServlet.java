@@ -27,7 +27,7 @@ public class ListServlet extends HttpServlet {
 
         logger.warn("hereee");
 
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("pages/registration.jsp");
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("pages/list.jsp");
         requestDispatcher.forward(req, resp);
     }
 }

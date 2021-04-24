@@ -1,4 +1,4 @@
-<%@ page import="java.util.List" %><%--
+<%--
   Created by IntelliJ IDEA.
   User: Laptop
   Date: 06.03.2021

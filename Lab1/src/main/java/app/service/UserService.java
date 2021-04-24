@@ -5,7 +5,6 @@ import app.dao.UsersDao;
 import app.model.user.User;
 
 public class UserService {
-
     private final UsersDao usersDao;
 
     public UserService() {
@@ -15,18 +14,19 @@ public class UserService {
     public User loginUser(String email, String password) {
         User resultUser;
         resultUser = usersDao.findByEmail(email)
-                .orElseThrow(() -> new RuntimeException("Cant find user with credentials"));
-
+                .orElseThrow(() -> new RuntimeException("Cant find user with current credentials"));
 
         if (resultUser.getPass().equals(password)) {
             return resultUser;
         }
-        throw new IllegalArgumentException("Different password");
+        throw new IllegalArgumentException("Incorrect password for this account");
     }
 
     public User registerNewUser(User user) throws Exception {
+        return usersDao.create(user).orElseThrow(() -> new Exception("User with this email already exist"));
+    }
 
-        return usersDao.create(user).orElseThrow(() -> new Exception("User with email already exist"));
-
+    public void setMoney(String email, Long money) {
+        usersDao.changeMoney(email, money);
     }
 }

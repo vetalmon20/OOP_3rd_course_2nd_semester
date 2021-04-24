@@ -27,7 +27,7 @@ public class ConnectionPool {
         Context context;
         Connection connection = null;
         try {
-            context = new InitialContext();
+            context = new InitialContext(); 
             DataSource dataSource = (DataSource) context.lookup("java:comp/env/jdbc/CoffeeMachine");
             connection = dataSource.getConnection();
             logger.info("Connection has been created successfully");
@@ -36,8 +36,4 @@ public class ConnectionPool {
         }
         return connection;
     }
-
-
 }
-
-

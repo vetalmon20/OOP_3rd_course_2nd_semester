@@ -31,11 +31,12 @@ public class MainServlet extends HttpServlet {
         req.getSession().removeAttribute("errorMessage");
         req.getSession().removeAttribute("errorRegister");
         String commandName = req.getRequestURI();
+        System.out.println(commandName + " - command name");
         String command = CommandContainer.get(commandName).execute(req);
-
+        System.out.println(command + " - command");
 
         if (command.contains("redirect:")) {
-            command = command.replace("redirect:/", "/pages/");
+            command = command.replace("redirect:/", "pages/");
             command = command.concat(".jsp");
             //resp.sendRedirect(command.replace("redirect:/", "/pages/"));
             resp.sendRedirect(command);

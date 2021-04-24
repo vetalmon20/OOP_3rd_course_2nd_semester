@@ -21,7 +21,7 @@ public class IngredientsDao {
         this.connection = connection;
     }
 
-    public List<Ingredient> getAll() {
+        public List<Ingredient> getAll() {
         List<Ingredient> ingredients = new ArrayList<>();
         ResultSet resultSet;
 
@@ -58,7 +58,7 @@ public class IngredientsDao {
 
         try {
             for (Long id : ids) {
-                PreparedStatement statement = connection.prepareStatement(resourceBundle.getString("ingredient.findById"));
+                PreparedStatement statement = connection.prepareStatement(resourceBundle.getString("ingredient.findNameById"));
                 statement.setLong(1, id);
                 resultSet = statement.executeQuery();
                 resultSet.next();
@@ -72,5 +72,25 @@ public class IngredientsDao {
         }
 
         return names;
+    }
+
+    public Ingredient findById(Long id) {
+        Ingredient ingredient = null;
+        ResultSet resultSet;
+
+        try {
+
+            PreparedStatement statement = connection.prepareStatement(resourceBundle.getString("ingredient.findById"));
+            statement.setLong(1, id);
+            resultSet = statement.executeQuery();
+            resultSet.next();
+            ingredient = ResultSetConverter.getIngredientFromResultSet(resultSet);
+
+            logger.info("Ingredients has been successfully received by their ids");
+        } catch (SQLException ex) {
+            logger.warn("Ingredients are not reachable by ids: {}", ex.getMessage());
+        }
+
+        return ingredient;
     }
 }
